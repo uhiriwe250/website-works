@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rebero Project - Payment Terminal</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; background-color: #f0f4f8; margin: 0; padding: 20px; display: flex; justify-content: center; align-items: center; min-height: 100vh; flex-direction: column; gap: 20px; }
+        
+        .card { background: rgb(1, 1, 74); padding: 30px; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.25); width: 100%; max-width: 400px; box-sizing: border-box; }
+        h2 { text-align: center; color: #ffffff; margin-top: 0; margin-bottom: 5px; font-size: 24px; }
+        .subtitle { text-align: center; color: #e2e8f0; font-size: 14px; margin-bottom: 25px; }
+        
+        label { font-weight: 600; display: block; margin-top: 15px; color: rgba(219, 95, 200, 0.584); font-size: 14px; }
+        input, select { width: 100%; padding: 12px; margin-top: 6px; border: 2px solid rgba(219, 95, 200, 0.584); border-radius: 6px; box-sizing: border-box; font-size: 15px; background-color: #ffffff; color: #0f172a; }
+        input:focus, select:focus { outline: none; border-color: #ffffff; }
+        
+        .momo-group { display: flex; 
+             gap: 10px;
+              margin-top: 6px; }
+        .momo-group select { width: 35%; margin-top: 0; }
+        .momo-group input { width: 65%; margin-top: 0; }
+        
+        button { width: 100%; background-color: rgb(1, 1, 74); color: white; border: 2px solid rgba(219, 95, 200, 0.584); padding: 14px; font-size: 16px; font-weight: bold; border-radius: 6px; margin-top: 25px; cursor: pointer; transition: background 0.2s, color 0.2s; }
+        button:hover { background-color: rgba(219, 95, 200, 0.584); color: rgb(1, 1, 74); }
+        
+        .receipt-box { display: none; margin-top: 20px; padding: 15px; border-radius: 8px; font-size: 14px; line-height: 1.5; border: 2px solid rgba(219, 95, 200, 0.584); background-color: rgba(219, 95, 200, 0.15); color: #ffffff; }
+        .success { display: block; }
+        .receipt-title { font-weight: bold; font-size: 16px; margin-bottom: 8px; border-bottom: 1px dashed rgba(219, 95, 200, 0.584); padding-bottom: 5px; color: #51cf66; }
+        .nav-link { color: rgba(219, 95, 200, 1); text-decoration: none; font-size: 14px; font-weight: bold; }
+        .nav-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Rebero payment sit</h2>
+    <div class="subtitle">Mobile Payment</div>
+    
+    <form id="paymentForm">
+        <label for="payName">Confirm Your Registered Full Name</label>
+        <input type="text" id="payName" placeholder="Must match registration name" required>
+
+        <label for="phone">Mobile Money Number</label>
+        <div class="momo-group">
+            <select id="carrier" required>
+                <option value="MTN">MTN</option>
+                <option value="Airtel">Airtel</option>
+            </select>
+            <input type="text" id="phone" placeholder="e.g. 0788000000" required>
+        </div>
+
+        <label for="amount">Amount to Pay (RWF)</label>
+        <input type="number" id="amount" placeholder="Enter amount in RWF" min="100" required>
+
+        <button type="submit" id="payBtn">Process Mobile Payment</button>
+        <button>ok</button>
+       
+    </form>
+
+    <div id="receiptMessage" class="receipt-box"></div>
+</div>
+
+<a href="Registration.html" class="nav-link">← Go Back to Registration Page</a>
+
+<script>
+document.getElementById('paymentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const payBtn = document.getElementById('payBtn');
+    const receiptBox = document.getElementById('receiptMessage');
+    
+    const name = document.getElementById('payName').value.trim();
+    const carrier = document.getElementById('carrier').value;
+    const phone = document.getElementById('phone').value;
+    const amount = Number(document.getElementById('amount').value).toLocaleString();
+    
+    payBtn.innerText = "Connecting to Gateway...";
+    payBtn.disabled = true;
+    
+    setTimeout(function() {
+        let activeDatabase = JSON.parse(localStorage.getItem('reberoCentralDB')) || [];
+        let recordFound = false;
+
+        // Loop through internal system database to update matching profile status
+        for (let i = 0; i < activeDatabase.length; i++) {
+            if (activeDatabase[i].payer.toLowerCase() === name.toLowerCase()) {
+                activeDatabase[i].status = `Paid ${amount} RWF via ${carrier}`;
+                recordFound = true;
+            }
+        }
+
+        if (recordFound) {
+            localStorage.setItem('reberoCentralDB', JSON.stringify(activeDatabase));
+            
+            const txRef = "REB-" + Math.floor(100000 + Math.random() * 900000);
+            receiptBox.innerHTML = `
+                <div class="receipt-title">💸 Payment Request Sent!</div>
+                <strong>Transaction ID:</strong> ${txRef}<br>
+                <strong>Status:</strong> Success & Logged to Database<br>
+                <strong>Payer Name:</strong> ${name}<br>
+                <strong>Account:</strong> ${carrier} (${phone})<br>
+                <strong>Amount:</strong> ${amount} RWF<br>
+                <small style="display:block; margin-top:10px; color:#a7f3d0;">
+                    *Database profile updated successfully. Please enter your Mobile Money PIN code on your phone screen to complete.
+                </small>
+            `;
+            receiptBox.className = "receipt-box success";
+            document.getElementById('paymentForm').reset();
+        } else {
+            alert("Error: The name you typed does not match any registered students in our database. Please check spelling or register first.");
+        }
+        
+        payBtn.innerText = "Process Mobile Payment";
+        payBtn.disabled = false;
+    }, 1500);
+});
+
+</script>
+<!-- <button><a href="about.html"></a>ok</button> -->
+
+</body>
+</html>

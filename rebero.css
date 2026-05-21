@@ -1,0 +1,340 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+h1{
+    color: #fff;
+}
+html { scroll-behavior: smooth;
+ }
+menu {
+    position: fixed;
+    width: 100%;
+    height: 8em;
+    background: rgb(1, 1, 74);
+    border-bottom: 2px solid  rgba(219, 95, 200, 0.584);
+    box-shadow: 10px 10px 10px black;
+}
+.menu{
+    text-decoration: none;
+    margin-left: 40em;
+    padding: 1rem;
+}
+ul {
+    display: flex;
+    margin-top: -1em;
+}
+li {
+    list-style: none;
+}
+a{
+    text-decoration: none;
+    margin-left: 4em;
+    font-size: large;
+    color: aliceblue;
+    transition:  color 0.2s;
+}
+a:hover{
+    color: rgba(219, 95, 200, 0.584);
+    padding: 5px 10px;
+   
+}
+
+.ex {
+    position: absolute;
+    width: 50em;
+    height: 20em;
+    background: rgba(1, 1, 74, 0.646);
+    left: 23em;
+    top: 19em;
+    border:5px solid rgba(219, 95, 200, 0.584);
+    border-bottom-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    z-index: -1;
+}
+body {
+    background-image: url(rebero.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+span{
+    color:rgba(219, 95, 200, 0.584) ;
+}
+menu h1{
+    margin-left: 3em;
+    margin-top: 1em;
+}
+.ex h2{
+    color: #fff;
+    margin-left: 15rem;
+    margin-top: 5rem;
+}
+.ex p{
+    color: #fff;
+    margin-left: 1rem;
+    margin-top: 2rem;
+}
+.about h1{
+    /* position: absolute; */
+    margin-top: -7em;
+    margin-left: 30rem;
+}
+.about h2{
+    margin-left: 30rem;
+    margin-top: 10rem;
+}
+.about{
+    z-index: -1;
+    position: absolute;
+    background-color: #fff;
+    margin-top: 100%;
+   
+}
+h6{
+    position: absolute;
+    color: #0e0685;
+    font-size: 3rem;
+    margin-top: -20rem;
+    margin-left: 35rem;
+}
+.mission{
+    position: absolute;
+    width: 25rem;
+    height: 30rem;
+    margin-left: 17em;
+    margin-top: -7em;
+    box-shadow: 2px 3px 4px  black;
+    background-color:rgb(1, 1, 74);
+    border-radius: 12px;
+    transition: 2s;
+    transition: background-color 0.2s;
+        
+        
+
+       
+
+}
+.mission:hover{
+  
+   background-color: #000001;
+   
+    
+}
+.vission{
+    position: absolute;
+    width: 25rem;
+    height: 30rem;
+    margin-left: 52em;
+    margin-top: -7em;
+    box-shadow: 2px 3px 4px  black;
+    background-color:rgb(1, 1, 74);
+    border-radius: 12px;
+    transition: background-color 0.2s;
+    
+}
+.vission:hover{
+     background-color: #000001;
+}
+
+.vission p{
+    position: absolute;
+    margin-left: 1rem;
+    color:rgba(219, 95, 200, 0.584) ;
+    margin-top: 4rem;
+}
+.vission h3{
+    color: #ffffff;
+    margin-top: 2rem;
+}
+ 
+.mission p{
+    position: absolute;
+    margin-left: 1rem;
+    color:rgba(219, 95, 200, 0.584);
+   
+}
+.mission h3{
+    color: #ffffff;
+    margin-left: 9rem;
+    margin-top: 2rem;
+}
+
+
+     #scrollTop {
+      position: fixed; 
+      bottom: 28px; 
+      right: 28px; 
+      z-index: 200;
+      width: 48px; 
+      height: 48px; 
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--yellow), var(--orange));
+      color: var(--dark); 
+      font-size: 1.3rem; 
+      border: none; 
+      cursor: pointer;
+      display: flex; 
+      align-items: center; 
+      justify-content: center;
+      box-shadow: 0 6px 20px var(--yellow)44;
+      opacity: 0; 
+      pointer-events: none;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+#scrollTop.show { opacity: 1; pointer-events: all; }
+ #scrollTop:hover { transform: translateY(-3px); }
+     :root {
+      --yellow: #060b98;
+      --pink: #FF6B9D;
+      --blue: #4FC3F7;
+      --green: #0e0685;
+      --purple: #C77DFF;
+      --orange: #3c46ff;
+      --dark: #1a1a2e;
+      --darker: #0f0f1a;
+      --card-bg: #ffffff12;
+      --text: #ffffff;
+      --text-muted: #ffffffaa;
+      --radius: 20px;
+      --transition: 0.3s ease;
+    }
+    .asy{
+         position: absolute;
+         width: 23rem;
+         height: 20rem;
+         margin-left: 10em;
+         margin-top: 10rem;
+         box-shadow: 2px 3px 4px  black;
+    }
+    .asy p{
+        margin-left: 1rem;
+    }
+    .asy h4{
+        margin-left: 6rem;
+    }
+    .gad{
+        position: absolute;
+         width: 23rem;
+         height: 20rem;
+         margin-left: 36em;
+         margin-top: 10rem;
+         box-shadow: 2px 3px 4px  black;
+
+    }
+    .gad h4{
+        margin-left: 6rem;
+
+    }
+    .gad p{
+         margin-left: 1rem;
+    }
+    .sc{
+         width: 23rem;
+         height: 20rem;
+         margin-left: 62em;
+         margin-top: 10rem;
+         box-shadow: 2px 3px 4px  black;
+         
+
+    }
+     .sc h4{
+         margin-left: 6rem;
+     }
+     .sc p{
+         margin-left: 1rem;
+
+     }
+     .lev{
+        position: absolute;
+         width: 23rem;
+         height: 20rem;
+         margin-left: 36em;
+         margin-top: 4rem;
+         box-shadow: 2px 3px 4px  black;
+
+     }
+     .lev img{
+        width: 23em; 
+        height:14em;
+     }
+      .lev p{
+          margin-left: 1rem;
+      }
+      .labo{
+         position: absolute;
+         width: 23rem;
+         height: 20rem;
+         margin-left: 10em;
+         margin-top: 4rem;
+         box-shadow: 2px 3px 4px  black;
+      }
+      .labo p{
+        margin-left: 1rem;
+
+      }
+      .camp{
+         position: absolute;
+         width: 23rem;
+         height: 20rem;
+         margin-left: 62em;
+         margin-top: 4rem;
+         box-shadow: 2px 3px 4px  black;
+
+      }
+      .camp p{
+         margin-left: 1rem;
+
+      }
+
+     .bars{
+        background: transparent;
+        padding: 10px;
+        border: none;
+        cursor: pointer ;
+     }
+     .bar{
+        display: block;
+        width: 25px;
+        height: 3px ;
+        margin: 5px auto;
+        background: #fff;
+        transition: all 0.3s ease-in-out;
+
+     }
+     @media(max-width)  {
+        .navbar{
+            backdrop-filter: none;
+
+        }
+        .navbar-container .navbar-menu{
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1.7rem !important;
+            position: absolute;
+            height: 100vh;
+            width: 250px;
+            top: 0;
+            right: 0;
+            padding: 5rem 1.5rem;
+            box-shadow: 0 10px 1opx rgb(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+        }
+
+        
+     }
+     .hed{
+        /* position: absolute; */
+        margin-top: 38rem;
+        margin-left: 1rem;
+        font-size: 2rem;
+        color:  #0e0685;
+     }
+     .get{
+        background-color: #4a0f0f;
+     }
+     .staff h2{
+        color: #060b98;
+     }
+
+
